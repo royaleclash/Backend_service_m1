@@ -9,6 +9,15 @@ import {
 
 const productRoutes = Router();
 
+/** 
+ * @swagger
+ * /api/products:
+ * get:
+ *  summary: Obtener todos los Productos
+ * responses:
+ * 200:
+ * description: Lista de Productos
+*/
 productRoutes.get("productRoutes/", getALLproducts);
 productRoutes.get("productRoutes/:id", getProductByID);
 productRoutes.post("productRoutes/", createproduct);

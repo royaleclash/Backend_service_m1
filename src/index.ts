@@ -2,9 +2,8 @@ import express, {Application} from "express";
 import cors from "cors";
 import { AppDataSource } from "./data-source";
 import productRoutes from "./routes/productRoutes";
-import swaggerUi  from "swagger-ui-express";
+import swaggerUI  from "swagger-ui-express";
 import swaggerSpec from "./swagger/swagger";
-import { error } from "console";
 
 const app: Application = express();
 const PORT = process.env.PORT ?? 3000;
@@ -17,7 +16,7 @@ app.use(express.json());
 app.use("/api/", productRoutes);
 
 //Documentacion
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 //Inicialiazacion de la base de datos y el servidor
 AppDataSource.initialize()
