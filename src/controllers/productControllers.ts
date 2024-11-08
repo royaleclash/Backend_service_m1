@@ -39,7 +39,7 @@ export const getProductByID = async (req: Request, res: Response) => {
         }
     } catch (error) {
         res.status(500).json({
-            message:"error al obtener el producto"
+            message: "error al obtener el producto"
 
 
         })
@@ -50,8 +50,8 @@ export const getProductByID = async (req: Request, res: Response) => {
 //crear un productos (POST)
 export const createproduct = async (req: Request, res: Response) => {
     try {
-        const {name, description, price} = req.body;
-        const product = new Product ();
+        const { name, description, price } = req.body;
+        const product = new Product();
         product.name = name;
         product.description = description;
         product.price = price;
@@ -60,12 +60,12 @@ export const createproduct = async (req: Request, res: Response) => {
 
     } catch (error) {
         res.status(500).json({
-            message:"error al crear un producto"
+            message: "error al crear un producto"
 
 
         })
 
-        
+
 
 
 
@@ -76,11 +76,11 @@ export const createproduct = async (req: Request, res: Response) => {
 //Actulizar un producto
 export const updateproduct = async (req: Request, res: Response) => {
     try {
-        const {name, description, price} = req.body;
-        const product = await productRepository.findOneBy ({
-            id : parseInt(req.params.id)
+        const { name, description, price } = req.body;
+        const product = await productRepository.findOneBy({
+            id: parseInt(req.params.id)
         })
-        
+
         //validamos que product tenga informacion
 
         if (product) {
@@ -89,23 +89,23 @@ export const updateproduct = async (req: Request, res: Response) => {
             product.price = price ?? product.price;
             await productRepository.save(product)
             res.json(product);
-            
+
         } else {
             res.status(404).json({
                 message: "no se encontro el producto."
             })
 
-        } 
+        }
 
 
     } catch (error) {
-        
-    res.status(500).json({
-         message:"error al actualizar un producto"
-    
-    
-            })
-    
+
+        res.status(500).json({
+            message: "error al actualizar un producto"
+
+
+        })
+
 
     }
 
@@ -114,35 +114,35 @@ export const updateproduct = async (req: Request, res: Response) => {
 //Eliminar un producto existente
 export const deleteproduct = async (req: Request, res: Response) => {
     try {
-        const product = await productRepository.findOneBy ({
-            id : parseInt(req.params.id)
+        const product = await productRepository.findOneBy({
+            id: parseInt(req.params.id)
         })
-        
+
         //validamos que product tenga informacion
 
         if (product) {
-           
-          await productRepository.remove(product)
+
+            await productRepository.remove(product)
             res.json({
                 message: "Producto eliminado."
             })
-            
+
         } else {
             res.status(404).json({
                 message: "no se encontro el producto."
             })
 
-        } 
+        }
 
 
     } catch (error) {
-        
-    res.status(500).json({
-        message:"error al eliminar un producto"
-    
-    
-            })
-     
+
+        res.status(500).json({
+            message: "error al eliminar un producto"
+
+
+        })
+
 
     }
 
