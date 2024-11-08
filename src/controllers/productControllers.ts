@@ -4,7 +4,7 @@ import { Product } from "../entities/product";
 import { json } from "stream/consumers";
 
 //traemos la tabla o entidad producto de la base de datos
-const productRepository = AppDataSource.getMongoRepository(Product);
+const productRepository = AppDataSource.getRepository(Product);
 
 //obtener todos los productos
 export const getALLproducts = async (req: Request, res: Response) => {

@@ -1,7 +1,6 @@
-import { url } from "inspector"
 import swaggerJSDoc, { Options } from "swagger-jsdoc"
 
-const swaggerOptinos: Options = {
+const swaggerOptions: Options = {
     definition: {
         openapi: "3.0.0",
         info: {
@@ -20,6 +19,6 @@ const swaggerOptinos: Options = {
     ]
 };
 
-const swaggerSpec = swaggerJSDoc(swaggerOptinos);
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 export default swaggerSpec;

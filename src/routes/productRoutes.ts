@@ -7,12 +7,21 @@ import {
     deleteproduct
 } from "../controllers/productControllers";
 
-const router = Router();
+const productRoutes = Router();
 
-router.get("products/", getALLproducts);
-router.get("products/:id", getProductByID);
-router.post("products/", createproduct);
-router.put("products/:id", updateproduct);
-router.delete("products/:id", deleteproduct);
+/** 
+ * @swagger
+ * /api/products:
+ * get:
+ *  summary: Obtener todos los Productos
+ * responses:
+ * 200:
+ * description: Lista de Productos
+*/
+productRoutes.get("productRoutes/", getALLproducts);
+productRoutes.get("productRoutes/:id", getProductByID);
+productRoutes.post("productRoutes/", createproduct);
+productRoutes.put("productRoutes/:id", updateproduct);
+productRoutes.delete("productRoutes/:id", deleteproduct);
 
-export default router;
+export default productRoutes;
